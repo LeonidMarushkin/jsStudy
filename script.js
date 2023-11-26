@@ -257,8 +257,29 @@ let {
 } = user;
 
 let userInfo = new createuUserInfo(nameUI, cityUI);
-
 console.log(userInfo);
+
+class Student {
+    #age = 0;
+    constructor(name) {
+        this.name = name;
+    }
+    setAge(ageF) {
+        this.#age = ageF;
+    }
+    printInfo() {
+        console.log(`Имя: ${this.name}, Возраст: ${this.#age}`);
+    }
+    haveBirthday() {
+        this.#age += 1;
+    }
+}
+
+const inst = new Student('Leonid');
+inst.setAge(31);
+inst.printInfo();
+inst.haveBirthday();
+inst.printInfo();
 
 
 
