@@ -281,5 +281,50 @@ inst.printInfo();
 inst.haveBirthday();
 inst.printInfo();
 
+class Task {
+    constructor(description) {
+        this.description = description;
+        this.completed = false;
+    }
+    createList() {
+      let taskLi = document.createElement('li');
+      let completedBtn = document.createElement('button'); 
+      let deleteBtn = document.createElement('button'); 
+      taskLi.textContent = this.description;
+      completedBtn.textContent = 'Выполнено';
+      deleteBtn.textContent = 'Удалить';
+      completedBtn.addEventListener('click', function (e) {
+        this.completed = !this.completed;
+        taskLi.style.textDecoration = 'line-through';
+      });
+      deleteBtn.addEventListener('click', function (e) {
+            taskLi.remove(); 
+      });
+      taskLi.append(completedBtn,deleteBtn);
+      return taskLi;
+    }
+}
 
+function addTaskFunction() {
+    const newTask = new Task(taskInp.value.trim());
+    taskUl.append(newTask.createList());
+    taskInp.value = '';
+}
 
+taskAddBtn.addEventListener('click', function (e) {
+    if (taskInp.value != '') {
+        addTaskFunction(); 
+    } else {
+        console.log('Заполни задачу!!');    
+    }    
+});
+
+taskInp.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && taskInp.value != '') {
+        addTaskFunction();     
+    }
+});
+
+showContentBtn.addEventListener('click', function (e) {
+    contentDiv.classList.toggle('showContent')
+});

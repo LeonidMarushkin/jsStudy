@@ -14,3 +14,15 @@
     padding: 10px;
     margin-bottom: 5px;
 }
+
+.contDiv {
+    width: 300px;
+    height: 600px;
+    background: #b83939;
+    transition: all 2s;
+    opacity: 0;
+}
+
+.showContent{
+    opacity: 1;
+}
